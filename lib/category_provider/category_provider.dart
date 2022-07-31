@@ -1,6 +1,7 @@
 import 'package:api_provider/category_provider/model_category.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../category_withoutProvider/category_model.dart';
 import 'http_category.dart';
 
 
@@ -15,9 +16,6 @@ class CategoryProvider extends ChangeNotifier{
     print(categoryList!.length);
   isLoading =false;
     notifyListeners();
-
-
   }
-
 
 }

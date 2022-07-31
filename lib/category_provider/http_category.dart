@@ -1,7 +1,8 @@
-
 import 'package:api_provider/category_provider/model_category.dart';
 import 'package:http/http.dart'as http;
 import 'dart:convert'as convert;
+
+import '../category_withoutProvider/category_model.dart';
 
 
 class ApiDataService{
@@ -13,13 +14,13 @@ class ApiDataService{
       print(response.body);
       if(response.statusCode==200){
 
-    result=convert.jsonDecode(response.body);
-    return CategotiesModel.fromJson(result!);
+        result=convert.jsonDecode(response.body);
+        return CategotiesModel.fromJson(result!);
       }
     }catch(e){
       print(e.toString());
     }
-   return CategotiesModel.fromJson(result!);
+    return CategotiesModel.fromJson(result!);
   }
 
 

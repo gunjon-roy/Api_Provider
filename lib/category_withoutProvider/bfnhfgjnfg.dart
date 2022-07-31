@@ -2,7 +2,9 @@ import '../category_provider/model_category.dart';
 import 'package:http/http.dart'as http;
 import 'dart:convert'as convert;
 
+import 'category_model.dart';
 class ApiDataService{
+
   Future<CategotiesModel> getCategoriesService() async{
     Map<String,dynamic>? result;
     try{
@@ -19,6 +21,5 @@ class ApiDataService{
     }
     return CategotiesModel.fromJson(result!);
   }
-
 
 }

@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
+import '../category_provider/http_category.dart';
 import '../category_provider/model_category.dart';
+import 'category_model.dart';
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({Key? key}) : super(key: key);
@@ -13,26 +15,26 @@ class CategoryScreen extends StatefulWidget {
 
 class _CategoryScreenState extends State<CategoryScreen> {
 
-  Future<CategotiesModel> getCategoriesService() async{
-    Map<String,dynamic>? result;
-    try{
-      String url= 'https://bppshops.com/api/bs/category_view';
-      http.Response response= await http.get(Uri.parse(url));
-      print(response.body);
-      if(response.statusCode==200){
-
-        result=convert.jsonDecode(response.body);
-        return CategotiesModel.fromJson(result!);
-      }
-    }catch(e){
-      print(e.toString());
-    }
-    return CategotiesModel.fromJson(result!);
-  }
+  // Future<CategotiesModel> getCategoriesService() async{
+  //   Map<String,dynamic>? result;
+  //   try{
+  //     String url= 'https://bppshops.com/api/bs/category_view';
+  //     http.Response response= await http.get(Uri.parse(url));
+  //     print(response.body);
+  //     if(response.statusCode==200){
+  //
+  //       result=convert.jsonDecode(response.body);
+  //       return CategotiesModel.fromJson(result!);
+  //     }
+  //   }catch(e){
+  //     print(e.toString());
+  //   }
+  //   return CategotiesModel.fromJson(result!);
+  // }
 
   List<Getcategory>? categorilist = [];
   getdata() async {
-    var data = await getCategoriesService();
+    var data = await ApiDataService().getCategoriesService();
     setState(() {
       categorilist = data.getcategory;
     });
