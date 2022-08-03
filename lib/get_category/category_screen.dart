@@ -54,6 +54,17 @@ class _Category_offerState extends State<Category_offer> {
   //   }
   //   return CategotiesModel.fromJson(result!);
   // }
+
+
+  List? CategoryList;
+  getData() async {
+    final data = await getdata() ;
+    setState(() {
+      CategoryList = data;
+    });
+  }
+
+
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -61,17 +72,6 @@ class _Category_offerState extends State<Category_offer> {
 
     //getCategoryData();
   }
-
-  List? CategoryList;
-  getData() async {
-    final data = await getData() ;
-    setState(() {
-      CategoryList = data;
-    });
-  }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -107,66 +107,66 @@ class _Category_offerState extends State<Category_offer> {
         ),
         body: Column(
           children: [
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 20),
-            //   child: Center(
-            //     child: Text(
-            //       "Categories",
-            //       style: TextStyle(
-            //         fontWeight: FontWeight.bold,
-            //         fontSize: 20,
-            //         color: Colors.black,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: 20,
-            // ),
-            // SizedBox(
-            //   height: MediaQuery.of(context).size.height * .2,
-            //   width: MediaQuery.of(context).size.width,
-            //   child: Padding(
-            //     padding: const EdgeInsets.only(top: 10, bottom: 10),
-            //     child: ListView.separated(
-            //         separatorBuilder: (context, index) {
-            //           return SizedBox(
-            //             width: 30,
-            //           );
-            //         },
-            //         scrollDirection: Axis.horizontal,
-            //         itemCount: CategoryList!.length,
-            //         itemBuilder: (context, index) {
-            //           return Column(
-            //             children: [
-            //               Container(
-            //                   height: MediaQuery.of(context).size.height * .14,
-            //                   width: 90,
-            //                   decoration: BoxDecoration(
-            //                     color: Colors.white,
-            //                     image: DecorationImage(
-            //                       image:
-            //                       NetworkImage(
-            //                         "https://bppshops.com/${CategoryList![index].categoryImage}",
-            //                       ),
-            //                       fit: BoxFit.cover,
-            //                     ),
-            //                     borderRadius: BorderRadius.circular(10),
-            //                   )),
-            //               SizedBox(
-            //                 width: 90,
-            //                 child: Text(
-            //                   CategoryList![index]['title'].toString(), //categoryList.categoryName.toString(),
-            //                   style: TextStyle(color: Colors.black),
-            //                   overflow: TextOverflow.ellipsis,
-            //                   textAlign: TextAlign.center,
-            //                 ),
-            //               ),
-            //             ],
-            //           );
-            //         }),
-            //   ),
-            // ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Center(
+                child: Text(
+                  "Categories",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .2,
+              width: MediaQuery.of(context).size.width,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
+                child: ListView.separated(
+                    separatorBuilder: (context, index) {
+                      return SizedBox(
+                        width: 30,
+                      );
+                    },
+                    scrollDirection: Axis.horizontal,
+                    itemCount: CategoryList!.length,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          Container(
+                              height: MediaQuery.of(context).size.height * .14,
+                              width: 90,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                // image: DecorationImage(
+                                //   image:
+                                //   NetworkImage(
+                                //     "https://bppshops.com/${CategoryList![index].categoryImage}",
+                                //   ),
+                                //   fit: BoxFit.cover,
+                                // ),
+                                borderRadius: BorderRadius.circular(10),
+                              )),
+                          SizedBox(
+                            width: 90,
+                            child: Text(
+                              CategoryList![index]['title'].toString(), //categoryList.categoryName.toString(),
+                              style: TextStyle(color: Colors.black),
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      );
+                    }),
+              ),
+            ),
           ],
         ),
       ),

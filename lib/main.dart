@@ -5,6 +5,8 @@ import 'package:api_provider/category_withoutProvider/category_HomePage1.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'category_withoutModelClass/product_screen.dart';
+import 'category_withoutModelClass/provider_model.dart';
 import 'get_category/category_screen.dart';
 import 'get_category_simply.dart';
 
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
     ChangeNotifierProvider<CategoryProvider>(create: (BuildContext)=>CategoryProvider(),),
+    ChangeNotifierProvider<ProductProvider>(create: (BuildContext)=>ProductProvider(),),
 
       ],
       child: MaterialApp(
@@ -28,7 +31,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Category_offer(),
+        home: ProductScreen(),
       ),
     );
   }
